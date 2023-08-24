@@ -66,7 +66,7 @@ const App = () => {
   return (
     <section className='container'>
       <form className='todo-form' onSubmit={submitHandler}>
-        <h1>To Do Application</h1>
+        <h1>To Do List</h1>
         <div>
           <input
             type='text'
