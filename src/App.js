@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
+import { MdOutlineClear } from 'react-icons/md';
 import ListItems from './components/ListItems';
 
 const getLocalStorage = () => {
@@ -13,6 +14,8 @@ const getLocalStorage = () => {
 
 const App = () => {
   const [name, setName] = useState('');
+  const [deadline, setDeadline] = useState('');
+  const [color, setColor] = useState('#123456');
   const [list, setList] = useState(getLocalStorage());
   const [isEditing, setIsEditing] = useState(false);
   const [editID, setEditID] = useState('');
@@ -32,7 +35,9 @@ const App = () => {
     const itemToEdit = list.find((item) => item.id === id);
     setEditID(id);
     setIsEditing(true);
-    setName(itemToEdit.title);
+    setName(itemToEdit.title.name);
+    setDeadline(itemToEdit.title.deadline);
+    setColor(itemToEdit.title.color);
   };
 
   const clearHandler = () => {
@@ -45,8 +50,9 @@ const App = () => {
     if (name.trim()) {
       if (isEditing) {
         const updatedList = list.map((item) => {
+          console.log(item);
           if (item.id === editID) {
-            return { ...item, title: name };
+            return { ...item, title: name, deadline: deadline, color: color };
           } else {
             return item;
           }
@@ -54,42 +60,81 @@ const App = () => {
         setList(updatedList);
         setIsEditing(false);
         setEditID('');
-      } 
-      else {
-        const newItem = { id: new Date().getTime().toString(), title: name };
+        console.log(updatedList);
+      } else {
+        const newItems = { name: name, deadline: deadline, color: color };
+        const newItem = {
+          id: new Date().getTime().toString(),
+          title: newItems,
+        };
         setList([...list, newItem]);
       }
       setName('');
-    } 
+      setDeadline('');
+      setColor('#123456');
+    } else {
+      alert('All Fields are mandatory');
+    }
   };
 
   return (
     <section className='container'>
       <form className='todo-form' onSubmit={submitHandler}>
-        <h1>To Do List</h1>
-        <div>
+        <h1 className='title-1'>To Do List</h1>
+        <div className='todo-form-control'>
+          <label htmlFor='add-item'>Add Item</label>
           <input
             type='text'
             className='input-area'
             name='input-area'
-            placeholder='Ex.Buy Fruits'
+            placeholder='Item'
             value={name}
             onChange={(e) => setName(e.target.value)}
+            id='add-item'
           />
-          <button type='submit' className='submit-button'>
-            {isEditing ? 'Edit' : 'Add'}
-          </button>
         </div>
+        <div className='todo-form-control'>
+          <label htmlFor='add-deadline'>Add Deadline</label>
+          <input
+            type='date'
+            className='input-area'
+            name='input-area'
+            placeholder='Date'
+            value={deadline}
+            onChange={(e) => setDeadline(e.target.value)}
+            id='add-deadline'
+          />
+        </div>
+        <div className='todo-form-control'>
+          <label htmlFor='add-color'>Add Color</label>
+          <input
+            type='color'
+            className='input-area'
+            name='input-area'
+            placeholder='color'
+            value={color}
+            onChange={(e) => setColor(e.target.value)}
+            id='add-color'
+          />
+        </div>
+        <button type='submit' className='submit-button'>
+          {isEditing ? 'Edit' : 'Add'}
+        </button>
+        {list.length > 0 && (
+          <div className='todo-form-container'>
+            <div className='todo-list'>
+              <ListItems
+                list={list}
+                deleteItem={deleteItem}
+                editItem={editItem}
+              />
+            </div>
+            <button className='clear-button' onClick={clearHandler}>
+              Clear Items <MdOutlineClear />
+            </button>
+          </div>
+        )}
       </form>
-
-      {list.length > 0 && (
-        <div className='todo-form-container'>
-          <ListItems list={list} deleteItem={deleteItem} editItem={editItem} />
-          <button className='clear-button' onClick={clearHandler}>
-            Clear Items
-          </button>
-        </div>
-      )}
     </section>
   );
 };
