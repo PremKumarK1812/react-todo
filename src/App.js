@@ -52,11 +52,15 @@ const App = () => {
         const updatedList = list.map((item) => {
           console.log(item);
           if (item.id === editID) {
-            return { ...item, title: name, deadline: deadline, color: color };
+            return {
+              id: editID,
+              title: { name: name, deadline: deadline, color: color },
+            };
           } else {
             return item;
           }
         });
+        console.log('hiii');
         setList(updatedList);
         setIsEditing(false);
         setEditID('');

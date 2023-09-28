@@ -35,14 +35,14 @@ body {
   animation: moveGradient 4s alternate infinite;
   background: linear-gradient(
     60deg,
-    hsl(224, 85%, 66%),
-    hsl(269, 85%, 66%),
-    hsl(314, 85%, 66%),
-    hsl(359, 85%, 66%),
-    hsl(44, 85%, 66%),
-    hsl(89, 85%, 66%),
-    hsl(134, 85%, 66%),
-    hsl(179, 85%, 66%)
+    hsl(224, 21%, 38%),
+    hsl(270, 27%, 38%),
+    hsl(314, 29%, 36%),
+    hsl(359, 26%, 36%),
+    hsl(44, 26%, 39%),
+    hsl(89, 27%, 37%),
+    hsl(134, 25%, 40%),
+    hsl(180, 24%, 35%)
   );
   background-size: 300% 300%;
   background-position: 0 50%;
@@ -145,14 +145,14 @@ input:hover {
   animation: moveGradient 4s alternate infinite;
   background: linear-gradient(
     60deg,
-    hsl(224, 85%, 66%),
-    hsl(269, 85%, 66%),
-    hsl(314, 85%, 66%),
-    hsl(359, 85%, 66%),
-    hsl(44, 85%, 66%),
-    hsl(89, 85%, 66%),
-    hsl(134, 85%, 66%),
-    hsl(179, 85%, 66%)
+    hsl(224, 21%, 38%),
+    hsl(270, 27%, 38%),
+    hsl(314, 29%, 36%),
+    hsl(359, 26%, 36%),
+    hsl(44, 26%, 39%),
+    hsl(89, 27%, 37%),
+    hsl(134, 25%, 40%),
+    hsl(180, 24%, 35%)
   );
   background-size: 300% 300%;
   background-position: 0 50%;
@@ -162,14 +162,14 @@ input:hover {
   animation: moveGradient 4s alternate-reverse infinite;
   background: linear-gradient(
     270deg,
-    hsl(224, 85%, 66%),
-    hsl(269, 85%, 66%),
-    hsl(314, 85%, 66%),
-    hsl(359, 85%, 66%),
-    hsl(44, 85%, 66%),
-    hsl(89, 85%, 66%),
-    hsl(134, 85%, 66%),
-    hsl(179, 85%, 66%)
+    hsl(224, 21%, 38%),
+    hsl(270, 27%, 38%),
+    hsl(314, 29%, 36%),
+    hsl(359, 26%, 36%),
+    hsl(44, 26%, 39%),
+    hsl(89, 27%, 37%),
+    hsl(134, 25%, 40%),
+    hsl(180, 24%, 35%)
   );
   background-size: 300% 300%;
   background-position: 0 50%;
